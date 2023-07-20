@@ -2,10 +2,12 @@ name: Test
 on:
   push:
     branches:
-      - "*"
+      - master
   pull_request:
     branches:
       - master
+
+permissions: read-all
 
 jobs:
   build:
@@ -28,6 +30,10 @@ jobs:
         run: |
           npm ci
           npm run test
+
+      - name: Run ESLint
+        run: |
+          npm run lint
 
       - name: Run Prettier
         run: |
